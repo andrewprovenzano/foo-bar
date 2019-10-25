@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedDataService } from '../shared-data.service';
 
 @Component({
   selector: 'app-foo',
@@ -6,15 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./foo.component.css']
 })
 export class FooComponent implements OnInit {
-
-  constructor() { }
+  // DI via TS automatic property
+  constructor(private sdSvc: SharedDataService) { }
 
   ngOnInit() {
   }
 
-  sharedData = 'Foo Shared Data';
+  //sharedData = 'Foo Shared Data';
+  get sharedData() {
+    return this.sdSvc.data;
+  }
 
   changeSharedData = () => {
-    console.log('changeSharedData');
+    console.log('changeSharedData()');
+    this.sdSvc.data = 'foo';
   }
 }

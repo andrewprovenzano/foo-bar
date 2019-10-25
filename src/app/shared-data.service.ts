@@ -5,5 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class SharedDataService {
 
+// DI via TS automatic property
+
   constructor() { }
+
+  data = 'Uninitialized';
 }

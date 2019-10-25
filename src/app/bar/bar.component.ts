@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedDataService } from '../shared-data.service';
 
 @Component({
   selector: 'app-bar',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bigCat: SharedDataService) { }
 
   ngOnInit() {
+  }
+
+  get kitten() {
+    return this.bigCat.data;
+  }
+
+  badKitty() {
+    this.bigCat.data = 'Meow';
   }
 
 }
